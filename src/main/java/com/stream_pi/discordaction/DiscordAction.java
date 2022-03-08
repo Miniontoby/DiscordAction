@@ -55,7 +55,7 @@ public class DiscordAction extends NormalAction {
         }
 
         DiscordWebhook webhook = new DiscordWebhook(webhookURL);
-	webhook.setAuthor(webhookUser);
+	webhook.setUsername(webhookUser);
 
         DiscordWebhook.EmbedObject embed = new DiscordWebhook.EmbedObject();
         embed.setTitle(webhookTitle);
