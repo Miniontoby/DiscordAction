@@ -17,7 +17,7 @@ public class DiscordAction extends NormalAction {
         setCategory("Discord");
         setAuthor("Miniontoby");
         setServerButtonGraphic("fab-discord");
-        setHelpLink("https://github.com/stream-pi/essential-actions");
+        setHelpLink("https://edugit.org/Miniontoby/DiscordAction");
         setVersion(new Version(1,0,0));
     }
 
@@ -27,16 +27,16 @@ public class DiscordAction extends NormalAction {
         Property webhookURLProperty = new StringProperty("webhook_url");
         webhookURLProperty.setDisplayName("Webhook URL");
 
-        Property contentProperty = new StringProperty("content");
-        contentProperty.setDisplayName("Webhook Text Content");
-
         Property usernameProperty = new StringProperty("username");
         usernameProperty.setDisplayName("Webhook Username");
 
         Property titleProperty = new StringProperty("title");
         titleProperty.setDisplayName("Webhook Title");
 
-        addClientProperties(webhookURLProperty, contentProperty, usernameProperty, titleProperty);
+        Property contentProperty = new StringProperty("content");
+        contentProperty.setDisplayName("Webhook Text Content");
+
+        addClientProperties(webhookURLProperty, usernameProperty, titleProperty, contentProperty);
     }
 
     @Override
@@ -46,9 +46,9 @@ public class DiscordAction extends NormalAction {
 
     public void sendMessage() throws MinorException {
         String webhookURL = getClientProperties().getSingleProperty("webhook_url").getStringValue();
-        String webhookContent = getClientProperties().getSingleProperty("content").getStringValue();
         String webhookTitle = getClientProperties().getSingleProperty("title").getStringValue();
         String webhookUser = getClientProperties().getSingleProperty("username").getStringValue();
+        String webhookContent = getClientProperties().getSingleProperty("content").getStringValue();
 
         if (webhookURL.isBlank()) {
             throwMinorException("No Discord Webhook URL specified!");
