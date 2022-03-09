@@ -30,13 +30,16 @@ public class DiscordAction extends NormalAction {
         Property usernameProperty = new StringProperty("username");
         usernameProperty.setDisplayName("Webhook Username");
 
-        Property titleProperty = new StringProperty("title");
-        titleProperty.setDisplayName("Webhook Title");
-
         Property contentProperty = new StringProperty("content");
-        contentProperty.setDisplayName("Webhook Text Content");
+        contentProperty.setDisplayName("Message Content");
 
-        addClientProperties(webhookURLProperty, usernameProperty, titleProperty, contentProperty);
+        Property titleProperty = new StringProperty("title");
+        titleProperty.setDisplayName("Embed Title");
+
+        Property descriptionProperty = new StringProperty("description");
+        descriptionProperty.setDisplayName("Embed Description");
+
+        addClientProperties(webhookURLProperty, usernameProperty, contentProperty, titleProperty, descriptionProperty);
     }
 
     @Override
@@ -46,9 +49,10 @@ public class DiscordAction extends NormalAction {
 
     public void sendMessage() throws MinorException {
         String webhookURL = getClientProperties().getSingleProperty("webhook_url").getStringValue();
-        String webhookTitle = getClientProperties().getSingleProperty("title").getStringValue();
         String webhookUser = getClientProperties().getSingleProperty("username").getStringValue();
         String webhookContent = getClientProperties().getSingleProperty("content").getStringValue();
+        String webhookEmbedTitle = getClientProperties().getSingleProperty("title").getStringValue();
+        String webhookEmbedDescription = getClientProperties().getSingleProperty("description").getStringValue();
 
         if (webhookURL.isBlank()) {
             throwMinorException("No Discord Webhook URL specified!");
@@ -56,10 +60,11 @@ public class DiscordAction extends NormalAction {
 
         DiscordWebhook webhook = new DiscordWebhook(webhookURL);
 	webhook.setUsername(webhookUser);
+	webhook.setContent(webhookContent);
 
         DiscordWebhook.EmbedObject embed = new DiscordWebhook.EmbedObject();
-        embed.setTitle(webhookTitle);
-        embed.setDescription(webhookContent);
+        embed.setTitle(webhookEmbedTitle);
+        embed.setDescription(webhookEmbedDescription);
 
         try {
             webhook.addEmbed(embed);

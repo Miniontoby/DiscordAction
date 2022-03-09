@@ -7,7 +7,7 @@
         <httpHeaders>
           <property>
             <name>Job-Token</name>
-            <value>com.stream_pi.discordaction</value>
+            <value>com.miniontoby.discordaction</value>
           </property>
         </httpHeaders>
       </configuration>
