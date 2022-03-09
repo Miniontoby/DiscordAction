@@ -18,7 +18,7 @@ public class DiscordAction extends NormalAction {
         setAuthor("Miniontoby");
         setServerButtonGraphic("fab-discord");
         setHelpLink("https://edugit.org/Miniontoby/DiscordAction");
-        setVersion(new Version(1,0,0));
+        setVersion(new Version(1,1,0));
     }
 
 
