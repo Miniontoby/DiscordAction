@@ -1,6 +1,6 @@
-package com.stream_pi.discordaction;
+package com.miniontoby.discordwebhookaction;
 
-import com.stream_pi.discordaction.DiscordWebhook;
+import com.miniontoby.discordwebhookaction.DiscordWebhook;
 import com.stream_pi.action_api.actionproperty.property.*;
 import com.stream_pi.action_api.externalplugin.NormalAction;
 import com.stream_pi.util.exception.MinorException;
@@ -10,10 +10,10 @@ import com.stream_pi.util.version.Version;
 
 import java.io.IOException;
 
-public class DiscordAction extends NormalAction {
+public class DiscordWebhookAction extends NormalAction {
 
-    public DiscordAction() {
-        setName("Discord");
+    public DiscordWebhookAction() {
+        setName("Discord Webhook");
         setCategory("Discord");
         setAuthor("Miniontoby");
         setServerButtonGraphic("fab-discord");

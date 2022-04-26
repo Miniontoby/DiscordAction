@@ -1,4 +1,4 @@
-package com.stream_pi.discordaction;
+package com.miniontoby.discordwebhookaction;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.awt.Color;
